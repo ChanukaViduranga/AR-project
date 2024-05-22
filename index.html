@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Program Demo</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00ff7f, #4b0082);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .logo {
+            margin-top: 50px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .button {
+            text-decoration: none;
+            background-color: #4b0082;
+            color: #00ff7f;
+            border: 2px solid #427bff;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #00ff7f;
+            color: #4b0082;
+        }
+        .footer {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            padding: 0 10px;
+        }
+        .shape {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        @media (min-width: 600px) {
+            .button {
+                font-size: 1.5em;
+            }
+            .shape {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="App.png" alt="Logo">
+    </div>
+    <div class="content">
+        <a href="" class="button">Click Me</a>
+    </div>
+    <div class="footer">
+        &copy; 2024 Students of SIBA IT Department.
+    </div>
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                const x = (e.clientX * parseInt(shape.dataset.speed)) / 100;
+                const y = (e.clientY * parseInt(shape.dataset.speed)) / 100;
+                shape.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            });
+        });
+
+        function createShape() {
+            const shape = document.createElement('div');
+            shape.classList.add('shape');
+            shape.style.left = `${Math.random() * 100}vw`;
+            shape.style.top = `${Math.random() * 100}vh`;
+            shape.dataset.speed = Math.random() * 10;
+            document.body.appendChild(shape);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            createShape();
+        }
+    </script>
+</body>
+</html>
