@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <title>Document</title>
 </head>
 
-<body>
-    <a-scene>
+<body style="margin : 0px;">
+   
+    <a-scene embedded arjs>
+        <!-- Display the snow_mountain.glb model with corrected rotation, position, and scale -->
+        <!-- <a-entity gltf-model="high.glb" rotation="0 0 0" position="5 0 0" scale="0.6 0.6 0.6"></a-entity> -->
        <!--                                            rotate              zoom--> 
         <a-entity gltf-model="New1.glb" rotation="0 -70 0" position="0 1 -2.5" scale="0.1 0.1 0.1"></a-entity>
-
-
+        
+        <a-entity camera></a-entity>
     </a-scene>
+    
 </body>
 
 </html>
